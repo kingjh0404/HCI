@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1034875227938",
+    "project_id": "hcidb-b30b6",
+    "storage_bucket": "hcidb-b30b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034875227938:android:bcbeb622e02cba1cfa5f7b",
+        "android_client_info": {
+          "package_name": "com.example.mbtiology"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfu7Sph1dBk6PvdQnGbwOSaYlq3p5IItI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
