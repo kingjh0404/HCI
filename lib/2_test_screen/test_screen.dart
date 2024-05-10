@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mbtiology/3_result_screen/result_screen.dart';
+
 import 'package:mbtiology/common/common_value.dart';
 import 'package:mbtiology/common/default_layout.dart';
 import 'package:mbtiology/2_test_screen/questions.dart' as questions;
+// import 'package:mbtiology/2_test_screen/result.dart'
+import 'package:mbtiology/2_test_screen/result.dart'; // Add semicolon at the end
+
+// import 'result.dart';
+
+// 전역 변수로 점수 선언
+int score = 0;
 
 class TestScreen extends StatefulWidget {
   final String name;
   final String type;
-
+  
   const TestScreen({
     required this.name,
     required this.type,
@@ -27,16 +34,20 @@ class _TestScreenState extends State<TestScreen> {
   Widget build(BuildContext context) {
     const defaultTextStyle = TextStyle(
       fontSize: 20,
+      color: Colors.black,
     );
 
     return DefaultLayout(
       appBar: renderAppBar(),
       body: ListView(
         children: [
-          Text(
-            '⭐️ ${widget.name} 이(가) 어떤 사람인지 생각하며 답변해 주시기 바랍니다.',
-            style: defaultTextStyle,
+          const Text(
+            '⭐️ Please read carefully and respond thoughtfully.',
+            style: TextStyle(
+              fontSize: 15,
+            ),
           ),
+
           const SizedBox(height: 20),
 
           // 문제 container
@@ -47,7 +58,8 @@ class _TestScreenState extends State<TestScreen> {
             ),
             decoration: BoxDecoration(
               border: Border.all(
-                width: CommonValue.commonWidth,
+                color: Colors.black, // Black border
+                width: 1, // Border width
               ),
             ),
             height: 300,
@@ -67,200 +79,110 @@ class _TestScreenState extends State<TestScreen> {
                       '${questions.mbti_qs[index]['order']}. ${questions.mbti_qs[index]['question']}',
                       style: defaultTextStyle,
                     ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'a. ${questions.mbti_qs[index]['ans_a']}',
-                      style: defaultTextStyle,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'b. ${questions.mbti_qs[index]['ans_b']}',
-                      style: defaultTextStyle,
-                    ),
                   ],
                 );
               },
             ),
           ),
           const SizedBox(height: 40),
-          Text(
-            ' 답안 작성',
+          const Text(
+            'choose an answer',
             style: defaultTextStyle,
           ),
           const SizedBox(height: 20),
           // 보기 a, b
-          Container(
-            height: 60,
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: CommonValue.commonWidth,
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(
-                      side: BorderSide(
-                        color: Colors.black,
-                      ),
-                    ),
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    elevation: 0,
-                  ),
-                  onPressed: () {
-                    if (page <= 70) {
-                      myAns.add(0);
-                      pageController.animateToPage(
-                        page++,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeIn,
-                      );
-                      setState(() {});
-                    }
-                  },
-                  child: const Text('a', style: defaultTextStyle),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(
-                      side: BorderSide(
-                        color: Colors.black,
-                      ),
-                    ),
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    elevation: 0,
-                  ),
-                  onPressed: () {
-                    if (page <= 70) {
-                      myAns.add(1);
-                      pageController.animateToPage(
-                        page++,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeIn,
-                      );
-                    }
-
-                    setState(() {});
-                  },
-                  child: const Text(
-                    'b',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (page == 71)
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 16,
-              ),
-              child: ElevatedButton(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
                 onPressed: () {
-                  var ScoreE = myAns[0] +
-                      myAns[7] +
-                      myAns[14] +
-                      myAns[21] +
-                      myAns[28] +
-                      myAns[35] +
-                      myAns[42] +
-                      myAns[49] +
-                      myAns[56] +
-                      myAns[63];
-                  var ScoreN = myAns[1] +
-                      myAns[8] +
-                      myAns[15] +
-                      myAns[22] +
-                      myAns[29] +
-                      myAns[36] +
-                      myAns[43] +
-                      myAns[50] +
-                      myAns[57] +
-                      myAns[64] +
-                      myAns[2] +
-                      myAns[9] +
-                      myAns[16] +
-                      myAns[23] +
-                      myAns[30] +
-                      myAns[37] +
-                      myAns[44] +
-                      myAns[51] +
-                      myAns[58] +
-                      myAns[65];
-                  var ScoreF = myAns[3] +
-                      myAns[10] +
-                      myAns[17] +
-                      myAns[24] +
-                      myAns[31] +
-                      myAns[38] +
-                      myAns[45] +
-                      myAns[52] +
-                      myAns[59] +
-                      myAns[66] +
-                      myAns[4] +
-                      myAns[11] +
-                      myAns[18] +
-                      myAns[25] +
-                      myAns[32] +
-                      myAns[39] +
-                      myAns[46] +
-                      myAns[53] +
-                      myAns[60] +
-                      myAns[67];
-                  var ScoreP = myAns[5] +
-                      myAns[12] +
-                      myAns[19] +
-                      myAns[26] +
-                      myAns[33] +
-                      myAns[40] +
-                      myAns[47] +
-                      myAns[54] +
-                      myAns[61] +
-                      myAns[68] +
-                      myAns[6] +
-                      myAns[13] +
-                      myAns[20] +
-                      myAns[27] +
-                      myAns[34] +
-                      myAns[41] +
-                      myAns[48] +
-                      myAns[55] +
-                      myAns[62] +
-                      myAns[69];
-
-                  var type1 = ScoreE >= 5 ? 'E' : 'I';
-                  var type2 = ScoreN >= 10 ? 'N' : 'S';
-                  var type3 = ScoreF >= 10 ? 'F' : 'T';
-                  var type4 = ScoreP >= 10 ? 'P' : 'F';
-
-                  var predictType = type1 + type2 + type3 + type4;
-
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (_) => ResultScreen(
-                        name: widget.name,
-                        type: widget.type,
-                        predictType: predictType,
-                      ),
-                    ),
-                    (route) => false,
-                  );
+                  if (page <=11) {
+                    myAns.add(0); // Add option 'a' to answers list
+                    // Check if the selected answer is correct
+                    if (myAns[page - 1] == 0 && questions.mbti_qs[page - 1]['correct'] == 'a') {
+                      score++; // Increment score if the answer is correct
+                    }
+                    nextPage();
+                  }
                 },
-                style: const ButtonStyle(),
-                child: const Text('제출하기'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: CommonValue.paperColor,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                    side: const BorderSide(
+                      color: Colors.black, // Black border
+                      width: 1, // Border width
+                    ),
+                  ),
+                ),
+                child: Text(
+                  'a. ${questions.mbti_qs[page - 1]['ans_a']}',
+                  style: defaultTextStyle,
+                ),
               ),
-            ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  if (page <= 11) {
+                    myAns.add(1); // Add option 'b' to answers list
+                    // Check if the selected answer is correct
+                    if (myAns[page - 1] == 1 && questions.mbti_qs[page - 1]['correct'] == 'b') {
+                      score++; // Increment score if the answer is correct
+                    }
+                    nextPage();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: CommonValue.paperColor,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                    side: const BorderSide(
+                      color: Colors.black, // Black border
+                      width: 1, // Border width
+                    ),
+                  ),
+                ),
+                child: Text(
+                  'b. ${questions.mbti_qs[page - 1]['ans_b']}',
+                  style: defaultTextStyle,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 
+  void nextPage() {
+    if (page < 11) {
+      if (myAns.length < page) {
+        myAns.add(0); // Default answer if not answered
+      }
+      pageController.animateToPage(
+        page++,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+      setState(() {});
+    } else {
+      // 마지막 문제일 때 결과 페이지로 이동
+      Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => ResultScreen2(
+      score: score,
+      name: widget.name, // 이름 전달
+      type: widget.type, // 유형 전달
+    ),
+  ),
+);
+
+    }
+  }
+  
   renderAppBar() {
     return AppBar(
       foregroundColor: Colors.black,
@@ -268,21 +190,14 @@ class _TestScreenState extends State<TestScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            '제2교시',
+            '1st period',
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: FontWeight.w700,
             ),
           ),
           Text(
-            "남의 영역",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          Text(
-            '좋아하는 형',
+            "Entry and Residence",
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
