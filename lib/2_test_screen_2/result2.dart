@@ -1,57 +1,7 @@
-// import 'package:flutter/material.dart';
-//
-// class ResultScreen2 extends StatelessWidget {
-//   final int score;
-//   final String name;
-//   final String type;
-//
-//   const ResultScreen2({
-//     Key? key,
-//     required this.score,
-//     required this.name,
-//     required this.type,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Result'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Text(
-//               'Your Score:',
-//               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//             ),
-//             Text(
-//               '$score', // 점수 출력
-//               style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-//             ),
-//             SizedBox(height: 20),
-//             Text(
-//               'Name: $name', // 이름 출력
-//               style: TextStyle(fontSize: 18),
-//             ),
-//             SizedBox(height: 10),
-//             Text(
-//               'Type: $type', // 유형 출력
-//               style: TextStyle(fontSize: 18),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
-import 'package:mbtiology/2_test_screen/test_screen.dart';
+import 'package:mbtiology/2_test_screen_2/test_screen2.dart';
 
-import '../2_test_screen_2/test_screen2.dart';
-import '../student/start2.dart';
+import 'allPass.dart';
 
 class ResultScreen2 extends StatelessWidget {
   final int score;
@@ -129,33 +79,6 @@ class ResultScreen2 extends StatelessWidget {
               )),
               const SizedBox(height: 20),
               if (score <= 6)
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.pop(context, '/TestScreen'); // Optionally reset the quiz or navigate to a retry screen
-                //   },
-                //   child: const Text('Retry'),
-                //   style: ElevatedButton.styleFrom(
-                //     foregroundColor: Colors.white, backgroundColor: Colors.red,
-                //   ),
-                // ),
-
-                ElevatedButton(
-                  onPressed: () {
-                    // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
-                    Navigator.push(
-                      context,
-                      //MaterialPageRoute(builder: (context) => ModifyPage()), // ModifyPage로 이동합니다.
-                      MaterialPageRoute(builder: (context) => const TestScreen(name: '', type: '',)),
-                    );
-                  },
-                  child: const Text('Retry'),
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.red,
-                  ),
-                ),
-
-              if (score > 6)
                 ElevatedButton(
                   onPressed: () {
                     // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
@@ -165,13 +88,26 @@ class ResultScreen2 extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const Period2(name: '', type: '',)),
                     );
                   },
-                  child: const Text('Next Page'),
+                  child: const Text('Retry'),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white, backgroundColor: Colors.red,
                   ),
                 ),
-
+              if (score > 6)
+                ElevatedButton(
+                  onPressed: () {
+                    // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
+                    Navigator.push(
+                      context,
+                      //MaterialPageRoute(builder: (context) => ModifyPage()), // ModifyPage로 이동합니다.
+                      MaterialPageRoute(builder: (context) => AllPass())
+                    );
+                  },
+                  child: const Text('Next Page'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, backgroundColor: Colors.green,
+                  ),
+                ),
             ],
           ),
         ),

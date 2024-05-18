@@ -40,11 +40,13 @@ dependencies:
   firebase_auth: ^4.19.5
   google_sign_in: ^6.2.1
   firebase_core: ^2.31.0
+  lottie: ^3.1.2
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -66,6 +68,28 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
   - asset/images/
+  - asset/images/la.png
+  - asset/images/shower.png
+  - asset/images/go.png
+  - asset/images/toilet.png
+  - asset/images/why.png
+  - asset/images/re.png
+  - asset/images/cold.png
+  - asset/images/ni.png
+  - asset/images/alcol.png
+  - asset/images/to_6.png
+  - asset/images/to_7.png
+  - asset/images/to_11.png
+  - asset/images/antipass.png
+  - asset/images/gan.png
+  - asset/images/bus.png
+  - asset/images/aa.png
+  - asset/images/open.png
+  - asset/images/roommate.png
+  - asset/images/ja.png
+  - asset/images/3.5.png
+  - asset/lottie/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
