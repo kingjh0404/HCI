@@ -53,7 +53,7 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Administrator number'),
+                decoration: InputDecoration(labelText: 'Student number'),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter administrator number';
