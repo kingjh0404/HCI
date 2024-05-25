@@ -21,15 +21,15 @@ class ResultScreen2 extends StatelessWidget {
     String title;
     List<String> details = [];
 
-    if (score <= 6) {
+    if (score >= 9) {
       imagePath = 'asset/images/to_6.png'; // Correct asset path
-      title = 'Total Points less 6';
+      title = 'Penalty Points more than 9';
       details = [
         'You have to move out of Dormitory!',
       ];
-    } else if (score > 6 && score < 10) {
+    } else if (score > 5 && score < 9) {
       imagePath = 'asset/images/to_7.png'; // Correct asset path
-      title = 'Total Points: 7~9';
+      title = 'Penalty Points: 5~9';
       details = [
         'Be careful!',
         'The penalty points are not many, but they are not small either.',
@@ -38,7 +38,7 @@ class ResultScreen2 extends StatelessWidget {
       ];
     } else {
       imagePath = 'asset/images/to_11.png'; // Correct asset path
-      title = 'Total Points over 10';
+      title = 'You are passed!';
       details = [
         'You are of the BEST RC Potato.',
         'Always selected in the first round of Dormitory selection',
@@ -64,11 +64,6 @@ class ResultScreen2 extends StatelessWidget {
               ),
               Image.asset(imagePath),
               const SizedBox(height: 20),
-              // Text(
-              //   title,
-              //   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              //   textAlign: TextAlign.center,
-              // ),
               ...details.map((detail) => Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
@@ -78,13 +73,11 @@ class ResultScreen2 extends StatelessWidget {
                 ),
               )),
               const SizedBox(height: 20),
-              if (score <= 6)
+              if (score > 5)
                 ElevatedButton(
                   onPressed: () {
-                    // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
                     Navigator.push(
                       context,
-                      //MaterialPageRoute(builder: (context) => ModifyPage()), // ModifyPage로 이동합니다.
                       MaterialPageRoute(builder: (context) => const Period2(name: '', type: '',)),
                     );
                   },
@@ -93,14 +86,12 @@ class ResultScreen2 extends StatelessWidget {
                     foregroundColor: Colors.white, backgroundColor: Colors.red,
                   ),
                 ),
-              if (score > 6)
+              if (score <= 5)
                 ElevatedButton(
                   onPressed: () {
-                    // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
                     Navigator.push(
-                      context,
-                      //MaterialPageRoute(builder: (context) => ModifyPage()), // ModifyPage로 이동합니다.
-                      MaterialPageRoute(builder: (context) => AllPass())
+                        context,
+                        MaterialPageRoute(builder: (context) => AllPass(adminNumber: '',))
                     );
                   },
                   child: const Text('Next Page'),

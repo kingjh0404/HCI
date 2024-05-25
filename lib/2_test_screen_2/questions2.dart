@@ -58,8 +58,8 @@ List<Map<String, String>> mbti_qs = [
   {
     'order': '9',
     'question': 'Due to family circumstances, I have to leave the dormitory early! Where should I get a refund?',
-    'ans_a': 'Put it in a microwave-safe container and go to do laundry.',
-    'ans_b': 'Put it in a microwave-safe container and heat it up.',
+    'ans_a': 'Talk to the secretary, talk to RC.',
+    'ans_b': 'Refund? What is it? Should I take it?',
   },
   {
     'order': '10',

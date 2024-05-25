@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mbtiology/secretary/check.dart';
 import 'modify.dart';
 
 class StartPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class StartPage extends StatelessWidget {
             ),
             SizedBox(height: 50),
             SizedBox(
-              width: 250,
+                width: 250,
                 height: 50,
                 child :ElevatedButton(
                   onPressed: () {
@@ -54,11 +55,10 @@ class StartPage extends StatelessWidget {
                 height: 50,
                 child :ElevatedButton(
                   onPressed: () {
-                    // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => ModifyPage()), // ModifyPage로 이동합니다.
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CheckPage()), // CheckPage로 이동
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFE4E4E5)), // 버튼의 배경색 설정
@@ -69,7 +69,7 @@ class StartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text("Take Test"),
+                  child: Text("Student List"),
                 )
             ),
           ],

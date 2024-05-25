@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mbtiology/student/profile2.dart';
-// import 'profile.dart'; // profile.dart 파일을 임포트합니다.
-
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PersonalInfoPage2 extends StatefulWidget {
   @override
@@ -13,7 +11,8 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
   final _formKey = GlobalKey<FormState>();
   String _adminNumber = '';
   String _name = '';
-  // String _
+  String _roomNumber = '';
+  bool _pass = false;
   String _dorm = 'Papyrus hall';
   final List<String> _dorms = [
     'Papyrus hall',
@@ -26,22 +25,26 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
     'HaYongJo hall',
   ];
 
+  Future<void> _saveStudentData() async {
+    await FirebaseFirestore.instance.collection('students_personinfo').add({
+      'adminNumber': _adminNumber,
+      'name': _name,
+      'dorm': _dorm,
+      'roomNumber': _roomNumber,
+      'pass': _pass,  // pass 필드 추가
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Row(
+        title: Row(
           children: [
-    //       IconButton(
-    //       icon: Icon(Icons.arrow_back),
-    //   onPressed: () {
-    //     Navigator.pop(context); // 뒤로 가기 아이콘을 눌렀을 때 이전 페이지로 이동합니다.
-    //   },
-    // ),
-     SizedBox(width: 45),
-    Text('Personal information'),
-    ],
-    ),
+            SizedBox(width: 45),
+            Text('Personal information'),
+          ],
+        ),
         backgroundColor: Color(0xFFD9D9D9),
       ),
       backgroundColor: Color(0xFFD9D9D9),
@@ -53,10 +56,10 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Administrator number'),
+                decoration: InputDecoration(labelText: 'Student number'),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter administrator number';
+                    return 'Please enter student number';
                   }
                   return null;
                 },
@@ -93,7 +96,7 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
                 decoration: InputDecoration(labelText: 'Select dorm'),
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'room number'),
+                decoration: InputDecoration(labelText: 'Room number'),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter room number';
@@ -101,16 +104,16 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
                   return null;
                 },
                 onSaved: (value) {
-                  _adminNumber = value!;
+                  _roomNumber = value!;
                 },
               ),
               SizedBox(height: 330.0),
-
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
+                      await _saveStudentData();
                       // Navigate to ProfilePage and pass adminNumber and name
                       Navigator.push(
                         context,

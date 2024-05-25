@@ -1,57 +1,7 @@
-// import 'package:flutter/material.dart';
-//
-// class ResultScreen2 extends StatelessWidget {
-//   final int score;
-//   final String name;
-//   final String type;
-//
-//   const ResultScreen2({
-//     Key? key,
-//     required this.score,
-//     required this.name,
-//     required this.type,
-//   }) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Result'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Text(
-//               'Your Score:',
-//               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-//             ),
-//             Text(
-//               '$score', // 점수 출력
-//               style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-//             ),
-//             SizedBox(height: 20),
-//             Text(
-//               'Name: $name', // 이름 출력
-//               style: TextStyle(fontSize: 18),
-//             ),
-//             SizedBox(height: 10),
-//             Text(
-//               'Type: $type', // 유형 출력
-//               style: TextStyle(fontSize: 18),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:mbtiology/2_test_screen/test_screen.dart';
 
 import '../2_test_screen_2/test_screen2.dart';
-import '../student/start2.dart';
 
 class ResultScreen2 extends StatelessWidget {
   final int score;
@@ -71,15 +21,19 @@ class ResultScreen2 extends StatelessWidget {
     String title;
     List<String> details = [];
 
-    if (score <= 6) {
-      imagePath = 'asset/images/to_6.png'; // Correct asset path
-      title = 'Total Points less 6';
+    if (score <= 5) {
+      imagePath = 'asset/images/to_11.png'; // Correct asset path
+      title = 'You are passed!';
       details = [
-        'You have to move out of Dormitory!',
+        // 'You have to move out of Dormitory!',
+        'You are of the BEST RC Potato.',
+        'Always selected in the first round of Dormitory selection',
+        'Please continue to stay like this.',
+        'A role model for new dorm students!',
       ];
-    } else if (score > 6 && score < 10) {
+    } else if (score > 5 && score < 9) {
       imagePath = 'asset/images/to_7.png'; // Correct asset path
-      title = 'Total Points: 7~9';
+      title = 'Penalty Points: 5~9';
       details = [
         'Be careful!',
         'The penalty points are not many, but they are not small either.',
@@ -87,13 +41,14 @@ class ResultScreen2 extends StatelessWidget {
         'The floor manager knows your name!',
       ];
     } else {
-      imagePath = 'asset/images/to_11.png'; // Correct asset path
-      title = 'Total Points over 10';
+      imagePath = 'asset/images/to_6.png'; // Correct asset path
+      title = 'Penalty Points more than 9';
       details = [
-        'You are of the BEST RC Potato.',
-        'Always selected in the first round of Dormitory selection',
-        'Please continue to stay like this.',
-        'A role model for new dorm students!',
+        // 'You are of the BEST RC Potato.',
+        // 'Always selected in the first round of Dormitory selection',
+        // 'Please continue to stay like this.',
+        // 'A role model for new dorm students!',
+        'You have to move out of Dormitory!',
       ];
     }
 
@@ -128,16 +83,16 @@ class ResultScreen2 extends StatelessWidget {
                 ),
               )),
               const SizedBox(height: 20),
-              if (score <= 6)
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.pop(context, '/TestScreen'); // Optionally reset the quiz or navigate to a retry screen
-                //   },
-                //   child: const Text('Retry'),
-                //   style: ElevatedButton.styleFrom(
-                //     foregroundColor: Colors.white, backgroundColor: Colors.red,
-                //   ),
-                // ),
+              if (score > 5)
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.pop(context, '/TestScreen'); // Optionally reset the quiz or navigate to a retry screen
+              //   },
+              //   child: const Text('Retry'),
+              //   style: ElevatedButton.styleFrom(
+              //     foregroundColor: Colors.white, backgroundColor: Colors.red,
+              //   ),
+              // ),
 
                 ElevatedButton(
                   onPressed: () {
@@ -155,7 +110,7 @@ class ResultScreen2 extends StatelessWidget {
                   ),
                 ),
 
-              if (score > 6)
+              if (score <= 5)
                 ElevatedButton(
                   onPressed: () {
                     // Modify 버튼을 눌렀을 때 modify.dart로 이동합니다.
