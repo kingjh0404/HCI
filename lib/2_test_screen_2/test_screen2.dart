@@ -23,7 +23,8 @@ class _TestScreenState extends State<Period2> {
   var page = 0; // 페이지 인덱스를 0으로 시작
   List<int> myAns = [];
   int score = 0;
-  final List<String> answers = ['b', 'b','a','a','a','a','a','b','a','a']; // 정답 리스트
+  //final List<String> answers = ['b', 'b','a','a','a','a','a','b','a','a']; // 정답 리스트
+  final List<String> answers = ['a', 'a','b','b','b','b','b','a','b','b']; // 오답 리스트
   
   @override
   Widget build(BuildContext context) {
