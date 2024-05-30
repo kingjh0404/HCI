@@ -59,18 +59,18 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Administrator number'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter administrator number';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _adminNumber = value!;
-                },
-              ),
+              // TextFormField(
+              //   decoration: InputDecoration(labelText: 'Administrator number'),
+              //   validator: (value) {
+              //     if (value!.isEmpty) {
+              //       return 'Please enter administrator number';
+              //     }
+              //     return null;
+              //   },
+              //   onSaved: (value) {
+              //     _adminNumber = value!;
+              //   },
+              // ),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Name'),
                 validator: (value) {

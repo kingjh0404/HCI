@@ -37,10 +37,10 @@ class ProfilePage extends StatelessWidget {
                       child: Image.asset("asset/images/logo.png", width: 373,height: 200,)  // Specify the image path and optionally set a width
                   ),
 
-                  Text(
-                    '$adminNumber',
-                    style: TextStyle(fontSize: 18),
-                  ),
+                  // Text(
+                  //   '$adminNumber',
+                  //   style: TextStyle(fontSize: 18),
+                  // ),
                   SizedBox(height: 10),
                   Text(
                     '$name',

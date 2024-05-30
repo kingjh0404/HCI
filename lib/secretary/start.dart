@@ -20,7 +20,7 @@ class StartPage extends StatelessWidget {
                 child: Image.asset('asset/images/logo.png', )  // Specify the image path and optionally set a width
             ),
             Text(
-              '$name ($adminNumber)',
+              '$name',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 50),

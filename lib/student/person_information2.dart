@@ -12,7 +12,7 @@ class _PersonalInfoPage2State extends State<PersonalInfoPage2> {
   String _adminNumber = '';
   String _name = '';
   String _roomNumber = '';
-  bool _pass = false;
+  bool _pass = true;
   String _dorm = 'Papyrus hall';
   final List<String> _dorms = [
     'Papyrus hall',
